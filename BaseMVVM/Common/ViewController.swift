@@ -90,6 +90,10 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
         label.backgroundColor = .clear
         label.numberOfLines = 2
         label.textAlignment = .center
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        
         //Muiltible title
         if let titleAttribute = titleAttribute, let subTitleAttribute = subTitleAttribute {
             let textAttribute = NSMutableAttributedString()
@@ -101,6 +105,7 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
             navigationItem.titleView = label
             return
         }
+
         //Title only
         if let titleAttribute = titleAttribute {
             label.attributedText = titleAttribute
@@ -120,6 +125,7 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
         if image == nil {
             image = UIImage(named: "ic_back_white")
         }
+        image = image?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.tintColor = .white
         let barButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(self.leftButtonTapped(sender:)))
         navigationItem.leftBarButtonItem = barButtonItem
@@ -135,12 +141,26 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
             image = UIImage(named: "ic_menu")
             image = image?.withRenderingMode(.alwaysOriginal)
         }
+        image = image?.withRenderingMode(.alwaysOriginal)
         let barButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(self.rightButtonTapped(sender:)))
         navigationItem.rightBarButtonItem = barButtonItem
     }
     
     func hideRightButton() {
         navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    func addEndIcon(textField: UITextField,image: UIImage?){
+        if image != nil{
+            let icon = UIImageView(image: image)
+            icon.contentMode = .scaleAspectFit
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 18))
+            icon.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
+            paddingView.addSubview(icon)
+            
+            textField.rightView = paddingView
+            textField.rightViewMode = .always
+        }
     }
     
     //Handle left/right button

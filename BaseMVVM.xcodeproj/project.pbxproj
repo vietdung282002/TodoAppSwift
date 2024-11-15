@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -150,6 +150,8 @@
 		6BFA1211245977E4008F35BE /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BFA120D245977E4008F35BE /* ItemTableViewCell.xib */; };
 		6BFA1213245977FB008F35BE /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA1212245977FB008F35BE /* ItemCellViewModel.swift */; };
 		6BFA1214245977FB008F35BE /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA1212245977FB008F35BE /* ItemCellViewModel.swift */; };
+		8B8D1C9E2CE5D3BB00B23FE6 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D1C9D2CE5D3B600B23FE6 /* Todo.swift */; };
+		8B8D1C9F2CE5D3BB00B23FE6 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D1C9D2CE5D3B600B23FE6 /* Todo.swift */; };
 		8C0F9CF9291C8DC9FCC77E39 /* Pods_BaseMVVM_prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AF1E92BF0C97F100C24B5C /* Pods_BaseMVVM_prod.framework */; };
 /* End PBXBuildFile section */
 
@@ -232,10 +234,17 @@
 		6BFA120D245977E4008F35BE /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		6BFA1212245977FB008F35BE /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		82AF1E92BF0C97F100C24B5C /* Pods_BaseMVVM_prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseMVVM_prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8D1C9D2CE5D3B600B23FE6 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		B382C7210C5BF91B96662C39 /* Pods-BaseMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseMVVM.debug.xcconfig"; path = "Target Support Files/Pods-BaseMVVM/Pods-BaseMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		C7C9B18487AC17C23436D274 /* Pods-BaseMVVM_prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseMVVM_prod.debug.xcconfig"; path = "Target Support Files/Pods-BaseMVVM_prod/Pods-BaseMVVM_prod.debug.xcconfig"; sourceTree = "<group>"; };
 		E7C9EDC0FFDF7A0146B05653 /* Pods-BaseMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseMVVM.release.xcconfig"; path = "Target Support Files/Pods-BaseMVVM/Pods-BaseMVVM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8B84D9032CE71975002B9ADA /* AddTodo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AddTodo; sourceTree = "<group>"; };
+		8B8D1CC92CE5F76A00B23FE6 /* TodoList */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TodoList; sourceTree = "<group>"; };
+		8B8E201F2CE75F59003C0253 /* Test */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Test; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6B1C7F3723C0392600A2EE8D /* Frameworks */ = {
@@ -291,10 +300,10 @@
 		6B1C7F3C23C0392600A2EE8D /* BaseMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				6B1C7F5423C03D6E00A2EE8D /* Configs */,
 				6BAE27F7244DE5B1009EA0AB /* Application */,
 				6B1C7F5823C03DE300A2EE8D /* Common */,
 				6B9F81A72430DF8000C50D5F /* Manager */,
-				6B1C7F5423C03D6E00A2EE8D /* Configs */,
 				6B1C7F5723C03D9D00A2EE8D /* Extensions */,
 				6B1C7F5223C03D3300A2EE8D /* Networking */,
 				6B1C7F5323C03D5300A2EE8D /* Models */,
@@ -319,6 +328,7 @@
 		6B1C7F5323C03D5300A2EE8D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8B8D1C9D2CE5D3B600B23FE6 /* Todo.swift */,
 				6BED040923C31F4E001F6616 /* Enum */,
 				6B4A7C592454591B00263634 /* DateTransform.swift */,
 				6B1A7F8223C191E000FEBBDE /* User.swift */,
@@ -349,15 +359,15 @@
 		6B1C7F5723C03D9D00A2EE8D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6B9F81B12430E74800C50D5F /* DateExtension.swift */,
 				6BB702822465599F00A9E1AE /* Kingfisher+RxSwift.swift */,
+				6B9F81AF2430E74800C50D5F /* UIViewExtensions.swift */,
+				6B9F81B12430E74800C50D5F /* DateExtension.swift */,
 				6B9F81B52430E74800C50D5F /* ObjectExtensions.swift */,
 				6B9F81B02430E74800C50D5F /* StringExtensions.swift */,
 				6B9F81B62430E74800C50D5F /* UIColorExtensions.swift */,
 				6B9F81B32430E74800C50D5F /* UIStoryboardExtensions.swift */,
 				6B9F81B22430E74800C50D5F /* UITableViewExtensions.swift */,
 				6B9F81B42430E74800C50D5F /* UIViewControllerExtensions.swift */,
-				6B9F81AF2430E74800C50D5F /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +395,9 @@
 		6B1C7F5E23C03EC100A2EE8D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8B8E201F2CE75F59003C0253 /* Test */,
+				8B84D9032CE71975002B9ADA /* AddTodo */,
+				8B8D1CC92CE5F76A00B23FE6 /* TodoList */,
 				6BAE280B244EB710009EA0AB /* Home */,
 				6B1C7F5F23C03ED700A2EE8D /* Splash */,
 				6BFA11F1245955E5008F35BE /* SignIn */,
@@ -585,6 +598,11 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				8B84D9032CE71975002B9ADA /* AddTodo */,
+				8B8D1CC92CE5F76A00B23FE6 /* TodoList */,
+				8B8E201F2CE75F59003C0253 /* Test */,
+			);
 			name = BaseMVVM;
 			productName = BaseMVVM;
 			productReference = 6B1C7F3A23C0392600A2EE8D /* BaseMVVM.app */;
@@ -603,6 +621,11 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8B84D9032CE71975002B9ADA /* AddTodo */,
+				8B8D1CC92CE5F76A00B23FE6 /* TodoList */,
+				8B8E201F2CE75F59003C0253 /* Test */,
 			);
 			name = BaseMVVM_prod;
 			productName = BaseMVVM;
@@ -790,6 +813,7 @@
 				6BAE2824244F0335009EA0AB /* HomeViewController.swift in Sources */,
 				6BFA11F92459561B008F35BE /* SignInViewModel.swift in Sources */,
 				6BB42EC32450AC5900D8CF80 /* ShadowView.swift in Sources */,
+				8B8D1C9E2CE5D3BB00B23FE6 /* Todo.swift in Sources */,
 				6B9F81BC2430E74800C50D5F /* UIViewControllerExtensions.swift in Sources */,
 				6BF7312524547420005D0441 /* ApiService.swift in Sources */,
 				6B9F81B72430E74800C50D5F /* UIViewExtensions.swift in Sources */,
@@ -843,6 +867,7 @@
 				6B9F81C22430E76300C50D5F /* CollectionViewCell.swift in Sources */,
 				6BB42EBB2450930000D8CF80 /* GradientView.swift in Sources */,
 				6B9F81C52430E76300C50D5F /* TableViewCell.swift in Sources */,
+				8B8D1C9F2CE5D3BB00B23FE6 /* Todo.swift in Sources */,
 				6B9F81C62430E76300C50D5F /* UITableViewExtensions.swift in Sources */,
 				6B9F81C82430E76300C50D5F /* View.swift in Sources */,
 				6B470EBF2430EBE50037B83B /* LibsManager.swift in Sources */,
@@ -1047,18 +1072,18 @@
 			baseConfigurationReference = B382C7210C5BF91B96662C39 /* Pods-BaseMVVM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = V5CBZTV7NC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.thoson.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = newwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ThoSon_Test_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1069,18 +1094,18 @@
 			baseConfigurationReference = E7C9EDC0FFDF7A0146B05653 /* Pods-BaseMVVM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = V5CBZTV7NC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.thoson.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = newwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ThoSon_Test_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1091,17 +1116,17 @@
 			baseConfigurationReference = C7C9B18487AC17C23436D274 /* Pods-BaseMVVM_prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = V5CBZTV7NC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info_prod.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.thoson.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = newwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ThoSon_Test_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1112,17 +1137,17 @@
 			baseConfigurationReference = 42E322C9B6CF2247EE243B73 /* Pods-BaseMVVM_prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = V5CBZTV7NC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info_prod.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.thoson.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = newwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ThoSon_Test_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

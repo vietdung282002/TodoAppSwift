@@ -17,7 +17,7 @@ class View: UIView {
         }
     }
 
-    convenience init(height: CGFloat) {
+    convenience init(height: CGFloat) { 
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: height))
         snp.makeConstraints { (make) in
             make.height.equalTo(height)

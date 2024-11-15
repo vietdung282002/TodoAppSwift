@@ -28,7 +28,7 @@ extension Reactive where Base: UIImageView {
     }
 }
 
-extension ImageCache: ReactiveCompatible {}
+extension ImageCache: @retroactive ReactiveCompatible {}
 
 extension Reactive where Base: ImageCache {
 

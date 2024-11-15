@@ -33,5 +33,10 @@ class HomeViewModel: ViewModel {
         Application.shared.presentInitialScreen(in: appDelegate.window)
     }
     
+    func openAddTodo(){
+        self.navigator.pushAddTodo()
+    }
+    
     // MARK: Private Function
+    
 }

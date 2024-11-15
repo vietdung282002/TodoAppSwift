@@ -24,8 +24,8 @@ class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
         super.setupUI()
         //        setTitle("Login", subTitle: nil)
         //        showBackButton()
-        usernameTextField.text = "Son Le"
-        passwordTextField.text = "123456"
+//        usernameTextField.text = "Son Le"
+//        passwordTextField.text = "123456"
     }
     
     override func setupListener() {

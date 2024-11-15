@@ -10,78 +10,61 @@ import UIKit
 import SnapKit
 
 class HomeViewController: ViewController<HomeViewModel, HomeNavigator> {
-    @IBOutlet weak private var containerView: UIView!
-    @IBOutlet weak var tab1Button: UIButton!
-    @IBOutlet weak var tab2Button: UIButton!
+
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var addNewTodoButton: UIButton!
     
-    private lazy var tab1VC: ListViewController = {
-        let viewController = ListViewController(nibName: ListViewController.className, bundle: nil)
-        let navigator = ListNavigator(with: viewController)
-        let viewModel = ListViewModel(navigator: navigator)
+    private lazy var todoListVC: TodoListViewController = {
+        let viewController = TodoListViewController(nibName: TodoListViewController.className, bundle: nil)
+        let navigator = TodoListNavigator(with: viewController)
+        let viewModel = TodoListViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         return viewController
     }()
-    
-    private lazy var tab2VC: ListViewController = {
-        let viewController = ListViewController(nibName: ListViewController.className, bundle: nil)
-        let navigator = ListNavigator(with: viewController)
-        let viewModel = ListViewModel(navigator: navigator)
-        viewController.viewModel = viewModel
-        return viewController
-    }()
-    
-    var currentViewController: UIViewController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        showTab1()
+        showTodoList()
+        addNewTodoButton.rx.tap.bind {[weak self] text in
+            guard let self = self else { return }
+            self.viewModel.openAddTodo()
+//            let controller = TestViewController()
+//            navigationController?.pushViewController(controller, animated: true)
+        }.disposed(by: disposeBag)
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     override func setupUI() {
         super.setupUI()
-        setTitle("MVVM DEMO",
-                 subTitle: "Newwave solution CSJ")
-        showLeftButton(image: UIImage(named: "ic_menu"))
-        //Setup right button
-        let barButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(self.rightButtonTapped(sender:)))
-        navigationItem.rightBarButtonItem = barButtonItem
-        //Setup tabs
-        tab1Button.rx.tap.bind { [weak self] () in
-            self?.showTab1()
-        }.disposed(by: disposeBag)
-        tab2Button.rx.tap.bind { [weak self] () in
-            self?.showTab2()
-        }.disposed(by: disposeBag)
     }
     
     override func setupListener() {
         super.setupListener()
-        
-        navigationItem.leftBarButtonItem!.rx.tap.bind { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.presentSideMenu()
-        }.disposed(by: disposeBag)
-        
-        navigationItem.rightBarButtonItem!.rx.tap.bind { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.logout()
-        }.disposed(by: disposeBag)
     }
     
     //Show list data
-    private func showTab1() {
-        currentViewController?.removeViewAndControllerFromParentViewController()
-        addChildViewController(tab1VC, toContainerView: containerView)
-        currentViewController = tab1VC
-    }
-    
-    private func showTab2() {
-        currentViewController?.removeViewAndControllerFromParentViewController()
-        addChildViewController(tab2VC, toContainerView: containerView)
-        currentViewController = tab2VC
+    private func showTodoList() {
+        addChild(todoListVC)
+        containerView.addSubview(todoListVC.view)
+        todoListVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            todoListVC.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            todoListVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            todoListVC.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            todoListVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
+        todoListVC.didMove(toParent: self)
     }
 }

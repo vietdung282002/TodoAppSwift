@@ -15,7 +15,7 @@ class SplashViewModel: ViewModel {
     init(navigator: SplashNavigator) {
         self.navigator = navigator
         super.init(navigator: navigator)
-        
+        navigator.pushSignIn()
         if AuthManager.shared.loggedIn.value {
             navigator.pushHome()
         } else {

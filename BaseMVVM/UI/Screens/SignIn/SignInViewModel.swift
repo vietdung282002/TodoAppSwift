@@ -23,30 +23,31 @@ class SignInViewModel: ViewModel {
     
     // MARK: Public Function
     func signIn(userName: String, password: String) {
-        if userName.isEmpty {
-            navigator.showAlert(title: "Common.Error".localized(),
-                                message: "Login.Username.Empty".localized())
-            return
-        }
-        if password.isEmpty {
-            navigator.showAlert(title: "Common.Error".localized(),
-                                message: "Login.Password.Empty".localized())
-            return
-        }
-        
-        Application.shared
-            .mockProvider
-            .login(username: userName, password: password)
-            .trackActivity(loadingIndicator)
-            .subscribe(onNext: { [weak self] token in
-                guard let self = self else { return }
-                //Save data
-                AuthManager.shared.token = token
-                self.fetchProfile()
-            }, onError: {[weak self] error in
-                self?.navigator.showAlert(title: "Common.Error".localized(),
-                                          message: "Login.Username.Password.Invalid".localized())
-            }).disposed(by: disposeBag)
+//        if userName.isEmpty {
+//            navigator.showAlert(title: "Common.Error".localized(),
+//                                message: "Login.Username.Empty".localized())
+//            return
+//        }
+//        if password.isEmpty {
+//            navigator.showAlert(title: "Common.Error".localized(),
+//                                message: "Login.Password.Empty".localized())
+//            return
+//        }
+//        
+//        Application.shared
+//            .mockProvider
+//            .login(username: userName, password: password)
+//            .trackActivity(loadingIndicator)
+//            .subscribe(onNext: { [weak self] token in
+//                guard let self = self else { return }
+//                //Save data
+//                AuthManager.shared.token = token
+//                self.fetchProfile()
+//            }, onError: {[weak self] error in
+//                self?.navigator.showAlert(title: "Common.Error".localized(),
+//                                          message: "Login.Username.Password.Invalid".localized())
+//            }).disposed(by: disposeBag)
+        self.navigator.pushHome()
     }
     
     func openSignUp() {
