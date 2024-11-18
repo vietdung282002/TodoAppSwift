@@ -15,11 +15,12 @@ import Alamofire
 enum ApiService {
     
     // MARK: - Authentication
-    case login(username: String, password: String)
-    case register(username: String, password: String)
+    case login(email: String, password: String)
+    case register(email: String, password: String)
     // MARK: - Profile
     case getProfile
     // MARK: - Item
+    case getTodos
     case getItems(page: Int, pageSize: Int)
     // MARK: Upload/Download
     case uploadAvatar(data: Data)
@@ -27,25 +28,32 @@ enum ApiService {
 }
 
 extension ApiService: TargetType {
+    
     var baseURL: URL {
         switch self {
         case .login:
-            return URL(string: Configs.Network.apiBaseUrl)!
+            return URL(string: Configs.Network.supabaseBaseUrl)!
+        case .register:
+            return URL(string: Configs.Network.supabaseBaseUrl)!
+        case .getTodos:
+            return URL(string: Configs.Network.supabaseBaseUrl)!
         case .downloadAvatar:
             return URL(string: "https://upload.wikimedia.org")!
         case .uploadAvatar:
             return URL(string: Configs.Network.apiBaseUrl)!
         default:
-            return URL(string: Configs.Network.apiBaseUrl)!
+            return URL(string: Configs.Network.supabaseBaseUrl)!
         }
     }
     
     var path: String {
         switch self {
         case .login( _, _):
-            return "/api/login"
+            return "auth/v1/token"
         case .register( _, _):
-            return "/api/register"
+            return "auth/v1/signup"
+        case .getTodos:
+            return "rest/v1/Todo"
         case .getItems:
             return "/3/discover/movie"
         case .getProfile:
@@ -59,7 +67,7 @@ extension ApiService: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .login:
+        case .login, .register:
             return .post
         case .uploadAvatar:
             return .post
@@ -70,19 +78,23 @@ extension ApiService: TargetType {
     
     var headers: [String : String]? {
         if let accessToken = AuthManager.shared.token?.accessToken {
-            return ["Authorization": "Bearer \(accessToken)"]
+            return ["apikey": "\(Configs.Network.supabaseApiKey)",
+                    "Authorization": "Bearer \(accessToken)",
+                    "Content-Type": "application/json"
+            ]
         }
-        return nil
+        return ["apikey": "\(Configs.Network.supabaseApiKey)",
+                "Content-Type": "application/json"]
     }
     
     var parameters: [String: Any] {
         var params: [String: Any] = [:]
         switch self {
-        case .login(let username, let password):
-            params["username"] = username
+        case .login(let email, let password):
+            params["email"] = email
             params["password"] = password
-        case .register(let username, let password):
-            params["username"] = username
+        case .register(let email, let password):
+            params["email"] = email
             params["password"] = password
         case .getItems(let page, let pageSize):
             params["api_key"] = Configs.Network.apiKey
@@ -100,9 +112,28 @@ extension ApiService: TargetType {
     var task: Task {
         switch self {
         case .login:
-            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+            let urlParameters: [String: Any] = ["grant_type": "password"]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
+        case .register:
+            let urlParameters: [String: Any] = [:]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
         case .getProfile:
             return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        case .getTodos:
+            let urlParameters: [String: Any] = ["select": "*"]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
         case .getItems:
             return .requestParameters(parameters: parameters, encoding: parameterEncoding)
         case .uploadAvatar(let data):
@@ -125,36 +156,12 @@ extension ApiService: TargetType {
     }
     
     var sampleData: Data {
-        switch self {
-        case .login:
-            return readJSONFromFile("MockSignIn")
-        case .register:
-            return readJSONFromFile("MockSignIn")
-        case .getItems:
-            return "{}".data(using: .utf8)!
-        case .getProfile:
-            return readJSONFromFile("MockProfile")
-        default:
-            return "{}".data(using: .utf8)!
-        }
+        return "{}".data(using: .utf8)!
     }
 }
 
 // MARK: - Read file JSON for sample data
-private func readJSONFromFile(_ fileName: String) -> Data {
-    if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-        do {
-            let fileUrl = URL(fileURLWithPath: path)
-            // Getting data from JSON file using the file URL
-            let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-            return data
-        } catch {
-            // Handle error here
-            return "{}".data(using: .utf8)!
-        }
-    }
-    return "{}".data(using: .utf8)!
-}
+
 
 private let defaultDownloadDestination: DownloadDestination = { temporaryURL, response in
     let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

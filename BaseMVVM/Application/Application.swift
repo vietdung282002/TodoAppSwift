@@ -18,7 +18,7 @@ final class Application: NSObject {
     
     private override init() {
         apiProvider = ApiProvider()
-        mockProvider = ApiProvider(mockData: true)
+        mockProvider = ApiProvider()
         super.init()
     }
 

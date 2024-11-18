@@ -10,9 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Moya
+import Supabase
 
 private func JSONResponseDataFormatter(_ data: Data) -> String {
     do {
+        
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
         let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
         return String(data: prettyData, encoding: .utf8) ?? String(data: data, encoding: .utf8) ?? ""
@@ -24,26 +26,25 @@ private func JSONResponseDataFormatter(_ data: Data) -> String {
 struct ApiProvider {
     private let provider: MoyaProvider<ApiService>
     
-    init(mockData: Bool = false) {
+    init() {
         let logger = NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: JSONResponseDataFormatter), logOptions: .verbose))
-        if mockData {
-            provider = MoyaProvider<ApiService>(
-                stubClosure: MoyaProvider.delayedStub(2),
-                plugins: [logger]
-            )
-        } else {
-            provider = MoyaProvider<ApiService>(
-                plugins: [logger]
-            )
-        }
+        provider = MoyaProvider<ApiService>(
+            plugins: []
+        )
     }
     
     // MARK: - Authorization
     
-    func login(username: String, password: String) -> Single<Token> {
-        return provider.rx.request(.login(username: username, password: password))
+    func login(email: String, password: String) -> Single<AuthResponse> {
+        return provider.rx.request(.login(email: email, password: password))
             .filterSuccessfulStatusCodes()
-            .mapObject(Token.self)
+            .mapObject(AuthResponse.self)
+    }
+    
+    func register(email: String, password: String) -> Single<AuthResponse>{
+        return provider.rx.request(.register(email: email, password: password))
+            .filterSuccessfulStatusCodes()
+            .mapObject(AuthResponse.self)
     }
     
     // MARK: - Profile
@@ -52,6 +53,12 @@ struct ApiProvider {
         return provider.rx.request(.getProfile)
             .filterSuccessfulStatusCodes()
             .mapObject(User.self)
+    }
+    
+    func getTodos() -> Single<Todo> {
+        return provider.rx.request(.getTodos)
+            .filterSuccessfulStatusCodes()
+            .mapObject(Todo.self)
     }
     
     func getItems(page: Int, pageSize: Int) -> Single<ArrayResponse<Item>> {

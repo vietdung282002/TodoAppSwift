@@ -39,6 +39,8 @@ struct Configs {
     struct Network {
         static let apiBaseUrl = "https://api.themoviedb.org"
         static let apiKey = "26763d7bf2e94098192e629eb975dab0"
+        static let supabaseBaseUrl = "https://jpqaympofsvasgcmyxes.supabase.co"
+        static let supabaseApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpwcWF5bXBvZnN2YXNnY215eGVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE1NTM3MDcsImV4cCI6MjA0NzEyOTcwN30.2KLXk2B6iwBUIEYLjVHPRLNcLa5TnyZ4YhWm5ua4nEc"
     }
 
     struct BaseDimensions {

@@ -12,7 +12,7 @@ import RxCocoa
 
 class SignUpViewController: ViewController<SignUpViewModel, SignUpNavigator> {
     @IBOutlet weak private var signUpButton: UIButton!
-    @IBOutlet weak private var usernameTextField: UITextField!
+    @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -24,21 +24,21 @@ class SignUpViewController: ViewController<SignUpViewModel, SignUpNavigator> {
         super.setupUI()
     
         showLeftButton()
-        usernameTextField.text = "Lê Thọ Sơn"
+        emailTextField.text = "vietdung@gmail.com"
         passwordTextField.text = "123456"
     }
     
     override func setupListener() {
         super.setupListener()
         
-        usernameTextField.rx.text.orEmpty.bind { [weak self] text in
+        emailTextField.rx.text.orEmpty.bind { [weak self] text in
             guard let self = self else { return }
-            self.viewModel.changeUserName(userName: text)
+            self.viewModel.changeEmai(email: text)
         }.disposed(by: disposeBag)
         
         passwordTextField.rx.text.orEmpty.bind { [weak self] text in
             guard let self = self else { return }
-            self.viewModel.changeUserName(userName: text)
+            self.viewModel.changePassword(password: text)
         }.disposed(by: disposeBag)
         
         signUpButton.rx.tap.bind { [weak self] text in

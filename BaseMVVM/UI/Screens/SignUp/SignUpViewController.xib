@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="Kzn-DX-edh" id="zgY-sq-zKq"/>
                 <outlet property="passwordTextField" destination="8N8-nH-67X" id="NmN-GX-tEV"/>
                 <outlet property="signUpButton" destination="AUc-mr-WGF" id="GW3-yM-0DQ"/>
-                <outlet property="usernameTextField" destination="Kzn-DX-edh" id="zgY-sq-zKq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,7 +40,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjI-pS-4HY">
                                             <rect key="frame" x="0.0" y="0.0" width="303" height="32"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kzn-DX-edh">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kzn-DX-edh">
                                                     <rect key="frame" x="16" y="0.0" width="243" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -193,7 +193,7 @@
             <color red="0.91399997472763062" green="0.94099998474121094" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainColor">
-            <color red="0.29019607843137252" green="0.21568627450980393" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.28999999165534973" green="0.21600000560283661" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textWhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

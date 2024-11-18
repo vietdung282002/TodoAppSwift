@@ -9,12 +9,14 @@
 import Foundation
 
 class TodoCellViewModel: CellViewModel {
-    let item: Item
+    let item: Todo
     
-    init(item: Item) {
+    init(item: Todo) {
         self.item = item
         super.init()
-        self.title.accept(item.name)
-        self.imageUrl.accept(item.thumbnail)
+        self.title.accept(item.taskTitle)
+        self.category.accept(item.categoryId)
+        self.time.accept(item.time)
+        self.isComplete.accept(item.isComplete)
     }
 }

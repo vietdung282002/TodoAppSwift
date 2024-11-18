@@ -18,6 +18,7 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Respon
     /// which implements the Mappable protocol and returns the result back
     /// If the conversion fails, the signal errors.
     func mapObject<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> Single<T> {
+        
         return flatMap { response -> Single<T> in
             return Single.just(try response.mapObject(type, context: context))
         }

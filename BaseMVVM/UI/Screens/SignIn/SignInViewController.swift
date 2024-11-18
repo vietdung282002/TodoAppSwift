@@ -11,7 +11,7 @@ import UIKit
 class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
     @IBOutlet weak private var loginButton: UIButton!
     @IBOutlet weak private var signUpButton: UIButton!
-    @IBOutlet weak private var usernameTextField: UITextField!
+    @IBOutlet weak private var email: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -24,8 +24,8 @@ class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
         super.setupUI()
         //        setTitle("Login", subTitle: nil)
         //        showBackButton()
-//        usernameTextField.text = "Son Le"
-//        passwordTextField.text = "123456"
+        email.text = "vietdung282002@gmail.com"
+        passwordTextField.text = "vietdung1"
     }
     
     override func setupListener() {
@@ -33,7 +33,7 @@ class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
         
         loginButton.rx.tap.bind {[weak self] text in
             guard let self = self else { return }
-            self.viewModel.signIn(userName: usernameTextField.text ?? "",
+            self.viewModel.signIn(email: email.text ?? "",
                                   password: passwordTextField.text ?? "")
         }.disposed(by: disposeBag)
         

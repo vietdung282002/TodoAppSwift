@@ -28,8 +28,6 @@ class HomeViewController: ViewController<HomeViewModel, HomeNavigator> {
         addNewTodoButton.rx.tap.bind {[weak self] text in
             guard let self = self else { return }
             self.viewModel.openAddTodo()
-//            let controller = TestViewController()
-//            navigationController?.pushViewController(controller, animated: true)
         }.disposed(by: disposeBag)
     }
     

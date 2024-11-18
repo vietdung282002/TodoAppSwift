@@ -50,20 +50,20 @@ class ListViewModel: ViewModel {
     // MARK: Private Function
     
     private func fetchItems(at page: Int) {
-        Application.shared.apiProvider.getItems(page: page, pageSize: 20)
+        Application.shared.apiProvider.getItems(page: page, pageSize: 10)
             .trackActivity(page == 1 ? loadingIndicator : ActivityIndicator())
             .subscribe(
                 onNext: { [weak self] response in
                     guard let self = self else { return }
-                    if response.results.isEmpty && page != 1 {
-                        return
-                    }
-                    self.page = page
-                    if page == 1 {
-                        self.movies.accept(response.results)
-                    } else {
-                        self.movies.accept(self.movies.value + response.results)
-                    }
+//                    if response.results.isEmpty && page != 1 {
+//                        return
+//                    }
+//                    self.page = page
+//                    if page == 1 {
+//                        self.movies.accept(response.results)
+//                    } else {
+//                        self.movies.accept(self.movies.value + response.results)
+//                    }
                 }, onError: { [weak self] error in
                     self?.navigator.showAlert(title: "Error",
                                               message: error.localizedDescription)

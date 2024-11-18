@@ -16,7 +16,7 @@ class SignUpViewModel: ViewModel {
     // MARK: Private Properties
     private let navigator: SignUpNavigator
     
-    private let userName = BehaviorRelay(value: "")
+    private let email = BehaviorRelay(value: "")
     private let password = BehaviorRelay(value: "")
     
     init(navigator: SignUpNavigator) {
@@ -26,8 +26,8 @@ class SignUpViewModel: ViewModel {
     
     // MARK: Public Function
     
-    func changeUserName(userName: String) -> Void {
-        self.userName.accept(userName)
+    func changeEmai(email: String) -> Void {
+        self.email.accept(email)
     }
     
     func changePassword(password: String) -> Void {
@@ -35,8 +35,8 @@ class SignUpViewModel: ViewModel {
     }
     
     func signUp() {
-        let userName = self.userName.value
-        if userName.isEmpty {
+        let email = self.email.value
+        if email.isEmpty {
             navigator.showAlert(title: "Common.Error".localized(),
                                 message: "Login.Username.Empty".localized())
             return
@@ -49,36 +49,33 @@ class SignUpViewModel: ViewModel {
         }
         
         Application.shared
-            .mockProvider
-            .login(username: userName, password: password)
+            .apiProvider
+            .register(email: email, password: password)
             .trackActivity(loadingIndicator)
-            .subscribe(onNext: { [weak self] token in
+            .subscribe(onNext: { [weak self] authResponse in
                 guard let self = self else { return }
                 //Save data
+                print(authResponse.accessToken ?? "")
+                var token = Token()
+                token.accessToken = authResponse.accessToken
                 AuthManager.shared.token = token
-                self.fetchProfile()
+                
+                let user = authResponse.user
+                if user != nil{
+                    UserManager.shared.saveUser(user!)
+                }
+                self.openHome()
             }, onError: {[weak self] error in
                 self?.navigator.showAlert(title: "Common.Error".localized(),
                                           message: "Login.Username.Password.Invalid".localized())
             }).disposed(by: disposeBag)
+    }
+    
+    func openHome(){
+        navigator.pushHome()
     }
     
     // MARK: Private Function
     
-    private func fetchProfile() {
-        Application.shared
-            .mockProvider
-            .getProfile()
-            .trackActivity(loadingIndicator)
-            .subscribe(onNext: { [weak self] user in
-                guard let self = self else { return }
-                //Save data
-                UserManager.shared.saveUser(user)
-                //Navigate
-                self.navigator.pushHome()
-            }, onError: {[weak self] error in
-                self?.navigator.showAlert(title: "Common.Error".localized(),
-                                          message: "Login.Username.Password.Invalid".localized())
-            }).disposed(by: disposeBag)
-    }
+
 }

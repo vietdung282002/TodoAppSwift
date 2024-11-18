@@ -11,10 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="email" destination="FJJ-Es-gru" id="qzO-Kp-8U3"/>
                 <outlet property="loginButton" destination="I1z-UE-7tC" id="FiP-xn-V17"/>
                 <outlet property="passwordTextField" destination="s5T-g8-aBI" id="pdS-CN-R2j"/>
                 <outlet property="signUpButton" destination="5gb-gP-Fh2" id="7Ln-80-mkO"/>
-                <outlet property="usernameTextField" destination="FJJ-Es-gru" id="qzO-Kp-8U3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,7 +44,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgc-y0-7Db">
                                                     <rect key="frame" x="0.0" y="0.0" width="330" height="32"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJJ-Es-gru">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJJ-Es-gru">
                                                             <rect key="frame" x="16" y="0.0" width="270" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>

@@ -26,6 +26,7 @@ def shared_pods
   pod 'SwiftyBeaver'
   # Keychain
   pod 'KeychainAccess'
+  pod 'RxDataSources'
 end
 
 target 'BaseMVVM' do

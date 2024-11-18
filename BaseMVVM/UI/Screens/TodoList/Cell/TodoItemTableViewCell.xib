@@ -22,9 +22,9 @@
                             <constraint firstAttribute="width" secondItem="SQA-la-IZO" secondAttribute="height" multiplier="1:1" id="GQM-Ja-Klk"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-JV-cBc">
-                        <rect key="frame" x="108" y="59.666666666666657" width="485" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-JV-cBc">
+                        <rect key="frame" x="108" y="43" width="485" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -34,16 +34,24 @@
                             <constraint firstAttribute="width" secondItem="nfr-dA-C4J" secondAttribute="height" multiplier="1:1" id="zmK-Ze-cd1"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-I1-Zl2">
+                        <rect key="frame" x="108" y="74" width="83.333333333333314" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="DBE-I1-Zl2" firstAttribute="top" secondItem="rD6-JV-cBc" secondAttribute="bottom" constant="10" id="36q-Cc-3Uu"/>
                     <constraint firstItem="nfr-dA-C4J" firstAttribute="leading" secondItem="rD6-JV-cBc" secondAttribute="trailing" constant="12" id="3E6-rF-dEc"/>
                     <constraint firstItem="SQA-la-IZO" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.6" id="5ax-5N-EKH"/>
                     <constraint firstAttribute="trailing" secondItem="nfr-dA-C4J" secondAttribute="trailing" constant="24" id="81H-cj-bhK"/>
                     <constraint firstItem="SQA-la-IZO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="AwW-FT-qCR"/>
                     <constraint firstItem="rD6-JV-cBc" firstAttribute="leading" secondItem="SQA-la-IZO" secondAttribute="trailing" constant="12" id="C2t-JL-ItO"/>
                     <constraint firstItem="nfr-dA-C4J" firstAttribute="centerY" secondItem="SQA-la-IZO" secondAttribute="centerY" id="LhC-v3-Zz4"/>
-                    <constraint firstItem="rD6-JV-cBc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MYS-Q5-t11"/>
+                    <constraint firstItem="DBE-I1-Zl2" firstAttribute="leading" secondItem="rD6-JV-cBc" secondAttribute="leading" id="NNd-rg-RbA"/>
                     <constraint firstItem="SQA-la-IZO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dug-QE-PNf"/>
+                    <constraint firstItem="rD6-JV-cBc" firstAttribute="top" secondItem="SQA-la-IZO" secondAttribute="top" constant="15" id="fr6-z0-oKR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
