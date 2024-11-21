@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5gb-gP-Fh2.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Sign Up\"; ObjectID = \"5gb-gP-Fh2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign Up"
+          }
+        }
+      }
+    },
+    "FJJ-Es-gru.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Email\"; ObjectID = \"FJJ-Es-gru\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "I1z-UE-7tC.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Login\"; ObjectID = \"I1z-UE-7tC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Login"
+          }
+        }
+      }
+    },
+    "P1N-PM-7D3.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Login\"; ObjectID = \"P1N-PM-7D3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Login"
+          }
+        }
+      }
+    },
+    "s5T-g8-aBI.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Password\"; ObjectID = \"s5T-g8-aBI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Password"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

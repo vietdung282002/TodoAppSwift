@@ -23,18 +23,14 @@ class HomeViewModel: ViewModel {
     
     // MARK: Public Function
     
-    func presentSideMenu() {
-        navigator.presentSideMenu()
-    }
-    
     func logout() {
         AuthManager.shared.token = nil
         UserManager.shared.removeUser()
         Application.shared.presentInitialScreen(in: appDelegate.window)
     }
     
-    func openAddTodo(){
-        self.navigator.pushAddTodo()
+    func openAddTodo(delegate:TodoDetailDelegate){
+        self.navigator.pushAddTodo(delegate: delegate)
     }
     
     // MARK: Private Function

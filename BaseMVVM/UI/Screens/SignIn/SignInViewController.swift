@@ -9,7 +9,7 @@
 import UIKit
 
 class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
-    @IBOutlet weak private var loginButton: UIButton!
+    @IBOutlet weak private var loginButton: CustomButton!
     @IBOutlet weak private var signUpButton: UIButton!
     @IBOutlet weak private var email: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
@@ -22,8 +22,6 @@ class SignInViewController: ViewController<SignInViewModel, SignInNavigator> {
     
     override func setupUI() {
         super.setupUI()
-        //        setTitle("Login", subTitle: nil)
-        //        showBackButton()
         email.text = "vietdung282002@gmail.com"
         passwordTextField.text = "vietdung1"
     }

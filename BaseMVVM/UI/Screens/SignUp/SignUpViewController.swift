@@ -11,21 +11,17 @@ import RxSwift
 import RxCocoa
 
 class SignUpViewController: ViewController<SignUpViewModel, SignUpNavigator> {
-    @IBOutlet weak private var signUpButton: UIButton!
+    @IBOutlet weak private var signUpButton: CustomButton!
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func setupUI() {
         super.setupUI()
-    
         showLeftButton()
-        emailTextField.text = "vietdung@gmail.com"
-        passwordTextField.text = "123456"
     }
     
     override func setupListener() {

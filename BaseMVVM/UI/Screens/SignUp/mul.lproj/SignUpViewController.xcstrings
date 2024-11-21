@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "8N8-nH-67X.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Password\"; ObjectID = \"8N8-nH-67X\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Password"
+          }
+        }
+      }
+    },
+    "9Ir-MY-0Wb.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"SignUp\"; ObjectID = \"9Ir-MY-0Wb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SignUp"
+          }
+        }
+      }
+    },
+    "AUc-mr-WGF.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Sign Up\"; ObjectID = \"AUc-mr-WGF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign Up"
+          }
+        }
+      }
+    },
+    "Kzn-DX-edh.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Email\"; ObjectID = \"Kzn-DX-edh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

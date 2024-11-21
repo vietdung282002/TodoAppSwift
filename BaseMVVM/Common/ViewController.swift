@@ -28,6 +28,7 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
     }
     
     deinit {
+        
         log.info("\(type(of: self)): Deinited")
     }
     
@@ -150,17 +151,24 @@ class ViewController<V: ViewModel, N: Navigator>: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
     }
     
-    func addEndIcon(textField: UITextField,image: UIImage?){
-        if image != nil{
-            let icon = UIImageView(image: image)
-            icon.contentMode = .scaleAspectFit
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 18))
-            icon.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
-            paddingView.addSubview(icon)
-            
-            textField.rightView = paddingView
-            textField.rightViewMode = .always
+    func addEndIcon(textField: UITextField, image: UIImage?, action: Selector?) {
+        guard let image = image else { return }
+        
+        let icon = UIImageView(image: image)
+        icon.contentMode = .scaleAspectFit
+        icon.isUserInteractionEnabled = true // Cho phép tương tác với icon
+        
+        if let action = action {
+            let tapGesture = UITapGestureRecognizer(target: self, action: action)
+            icon.addGestureRecognizer(tapGesture)
         }
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 18))
+        icon.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
+        paddingView.addSubview(icon)
+        
+        textField.rightView = paddingView
+        textField.rightViewMode = .always
     }
     
     //Handle left/right button

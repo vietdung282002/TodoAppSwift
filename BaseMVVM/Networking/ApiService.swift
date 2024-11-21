@@ -17,33 +17,18 @@ enum ApiService {
     // MARK: - Authentication
     case login(email: String, password: String)
     case register(email: String, password: String)
-    // MARK: - Profile
-    case getProfile
-    // MARK: - Item
     case getTodos
-    case getItems(page: Int, pageSize: Int)
-    // MARK: Upload/Download
-    case uploadAvatar(data: Data)
-    case downloadAvatar(contentPath: String)
+    case getTodo(todoId: Int)
+    case addTodo(taskTitle: String,categoryId: Int,taskNote: String, time: String)
+    case editTodo(taskTitle: String,categoryId: Int,taskNote: String, time: String,todoId: Int)
+    case checkTodo(todoId: Int, isChecked: Bool)
+    case deleteTodo(todoId: Int)
 }
 
 extension ApiService: TargetType {
     
     var baseURL: URL {
-        switch self {
-        case .login:
-            return URL(string: Configs.Network.supabaseBaseUrl)!
-        case .register:
-            return URL(string: Configs.Network.supabaseBaseUrl)!
-        case .getTodos:
-            return URL(string: Configs.Network.supabaseBaseUrl)!
-        case .downloadAvatar:
-            return URL(string: "https://upload.wikimedia.org")!
-        case .uploadAvatar:
-            return URL(string: Configs.Network.apiBaseUrl)!
-        default:
-            return URL(string: Configs.Network.supabaseBaseUrl)!
-        }
+        return URL(string: Configs.Network.supabaseBaseUrl)!
     }
     
     var path: String {
@@ -52,25 +37,19 @@ extension ApiService: TargetType {
             return "auth/v1/token"
         case .register( _, _):
             return "auth/v1/signup"
-        case .getTodos:
+        case .getTodos, .getTodo, .addTodo, .editTodo, .checkTodo, .deleteTodo:
             return "rest/v1/Todo"
-        case .getItems:
-            return "/3/discover/movie"
-        case .getProfile:
-            return "/api/user"
-        case .uploadAvatar:
-            return "/api/user/avatar"
-        case .downloadAvatar:
-            return "/wikipedia/commons/4/4e/Pleiades_large.jpg"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .login, .register:
+        case .login, .register, .addTodo:
             return .post
-        case .uploadAvatar:
-            return .post
+        case .editTodo, .checkTodo:
+            return .patch
+        case .deleteTodo:
+            return .delete
         default:
             return .get
         }
@@ -96,10 +75,19 @@ extension ApiService: TargetType {
         case .register(let email, let password):
             params["email"] = email
             params["password"] = password
-        case .getItems(let page, let pageSize):
-            params["api_key"] = Configs.Network.apiKey
-            params["page"] = page
-            params["pageSize"] = pageSize
+        case .addTodo(let taskTitle,let categoryId,let taskNote,let time):
+            params["task_title"] = taskTitle
+            params["category_id"] = categoryId
+            params["task_note"] = taskNote
+            params["time"] = time
+            params["user_id"] = UserManager.shared.currentUser.value?.id
+        case .editTodo(let taskTitle,let categoryId,let taskNote,let time, _):
+            params["task_title"] = taskTitle
+            params["category_id"] = categoryId
+            params["task_note"] = taskNote
+            params["time"] = time
+        case .checkTodo(_,let isChecked):
+            params["is_complete"] = isChecked
         default: break
         }
         return params
@@ -125,24 +113,52 @@ extension ApiService: TargetType {
                 bodyEncoding: JSONEncoding.default,
                 urlParameters: urlParameters
             )
-        case .getProfile:
-            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+            
         case .getTodos:
-            let urlParameters: [String: Any] = ["select": "*"]
+            let urlParameters: [String: Any] = ["select": "*","order":"time.asc"]
+            return .requestParameters(
+                parameters: urlParameters, 
+                encoding: URLEncoding.default
+            )
+        case .getTodo(let todoId):
+            let query = "eq." + String(todoId)
+            let urlParameters: [String: Any] = ["select": "*",
+                                                "todo_id":query]
+            return .requestParameters(
+                parameters: urlParameters,
+                encoding: URLEncoding.default
+            )
+        case .addTodo:
+            let urlParameters: [String: Any] = [:]
             return .requestCompositeParameters(
                 bodyParameters: parameters,
                 bodyEncoding: JSONEncoding.default,
                 urlParameters: urlParameters
             )
-        case .getItems:
-            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
-        case .uploadAvatar(let data):
-            let multipartFormData = [MultipartFormData(provider: .data(data), name: "file", fileName: "image.png", mimeType: "image/png")]
-            return .uploadCompositeMultipart(multipartFormData, urlParameters: ["api_key": "dc6zaTOxFJmzC", "username": "Moya"])
-        case.downloadAvatar:
-            return .downloadDestination(defaultDownloadDestination)
-        default:
-            return .requestPlain
+        case .editTodo(_,_,_,_,let todoId):
+            let query = "eq." + String(todoId)
+            let urlParameters: [String: Any] = ["todo_id":query]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
+        case .checkTodo(let todoId, _):
+            let query = "eq." + String(todoId)
+            let urlParameters: [String: Any] = ["todo_id":query]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
+        case .deleteTodo(let todoId):
+            let query = "eq." + String(todoId)
+            let urlParameters: [String: Any] = ["todo_id":query]
+            return .requestCompositeParameters(
+                bodyParameters: parameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: urlParameters
+            )
         }
     }
     
@@ -160,20 +176,4 @@ extension ApiService: TargetType {
     }
 }
 
-// MARK: - Read file JSON for sample data
 
-
-private let defaultDownloadDestination: DownloadDestination = { temporaryURL, response in
-    let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    
-    if !directoryURLs.isEmpty {
-        let customFilename = Date().iso8601String
-        guard let suggestedFilename = response.suggestedFilename else {
-            fatalError("@Moya/contributor error!! We didn't anticipate this being nil")
-        }
-        //        return (directoryURLs[0].appendingPathComponent(suggestedFilename), [])
-        return (directoryURLs[0].appendingPathComponent(customFilename), [])
-    }
-    
-    return (temporaryURL, [])
-}

@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "c3f-Sl-5qB.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"My Todo List\"; ObjectID = \"c3f-Sl-5qB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "My Todo List"
+          }
+        }
+      }
+    },
+    "v3r-yA-aw1.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Add New Task\"; ObjectID = \"v3r-yA-aw1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add New Task"
+          }
+        }
+      }
+    },
+    "v3r-yA-aw1.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"v3r-yA-aw1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "Xh0-F3-iqj.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"October 20, 2022\"; ObjectID = \"Xh0-F3-iqj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "October 20, 2022"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

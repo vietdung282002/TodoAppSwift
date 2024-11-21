@@ -1,0 +1,12 @@
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "8N8-nH-67X"; */
+"8N8-nH-67X.placeholder" = "Mật khẩu";
+
+/* Class = "UILabel"; text = "SignUp"; ObjectID = "9Ir-MY-0Wb"; */
+"9Ir-MY-0Wb.text" = "Đăng ký";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "AUc-mr-WGF"; */
+"AUc-mr-WGF.normalTitle" = "Đăng ký";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "Kzn-DX-edh"; */
+"Kzn-DX-edh.placeholder" = "Email";

@@ -10,46 +10,48 @@ import UIKit
 import SnapKit
 
 class HomeViewController: ViewController<HomeViewModel, HomeNavigator> {
-
+    
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var addNewTodoButton: UIButton!
+    @IBOutlet weak var addNewTodoButton: CustomButton!
+    @IBOutlet weak var currentDateLabel: UILabel!
     
     private lazy var todoListVC: TodoListViewController = {
-        let viewController = TodoListViewController(nibName: TodoListViewController.className, bundle: nil)
-        let navigator = TodoListNavigator(with: viewController)
-        let viewModel = TodoListViewModel(navigator: navigator)
-        viewController.viewModel = viewModel
-        return viewController
+        let todoListViewController = TodoListViewController(nibName: TodoListViewController.className, bundle: nil)
+        let todoListNavigator = TodoListNavigator(with: todoListViewController)
+        let todoViewModel = TodoListViewModel(navigator: todoListNavigator)
+        todoListViewController.viewModel = todoViewModel
+        return todoListViewController
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        showTodoList()
-        addNewTodoButton.rx.tap.bind {[weak self] text in
-            guard let self = self else { return }
-            self.viewModel.openAddTodo()
-        }.disposed(by: disposeBag)
+        
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
+    
     override func setupUI() {
         super.setupUI()
+        showTodoList()
+        currentDateLabel.text = getCurrentDate()
+        
     }
     
     override func setupListener() {
         super.setupListener()
+        addNewTodoButton.rx.tap.bind {[weak self] text in
+            guard let self = self else { return }
+            self.viewModel.openAddTodo(delegate: self)
+        }.disposed(by: disposeBag)
     }
     
     //Show list data
@@ -64,5 +66,11 @@ class HomeViewController: ViewController<HomeViewModel, HomeNavigator> {
             todoListVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
         todoListVC.didMove(toParent: self)
+    }
+}
+
+extension HomeViewController: TodoDetailDelegate{
+    func onFinish() {
+        todoListVC.reloadData()
     }
 }

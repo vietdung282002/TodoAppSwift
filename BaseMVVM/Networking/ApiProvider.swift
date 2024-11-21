@@ -49,25 +49,45 @@ struct ApiProvider {
     
     // MARK: - Profile
     
-    func getProfile() -> Single<User> {
-        return provider.rx.request(.getProfile)
-            .filterSuccessfulStatusCodes()
-            .mapObject(User.self)
-    }
-    
-    func getTodos() -> Single<Todo> {
+    func getTodos() -> Single<[Todo]> {
         return provider.rx.request(.getTodos)
             .filterSuccessfulStatusCodes()
-            .mapObject(Todo.self)
+            .mapArray(Todo.self)
     }
     
-    func getItems(page: Int, pageSize: Int) -> Single<ArrayResponse<Item>> {
-        return provider.rx.request(.getItems(page: page, pageSize: pageSize))
+    func getTodo(todoId: Int) -> Single<Todo>{
+        return provider.rx.request(.getTodo(todoId: todoId))
             .filterSuccessfulStatusCodes()
-            .mapObject(ArrayResponse<Item>.self)
+            .map { response -> Todo in
+                let todoArray = try response.mapArray(Todo.self)
+                guard let firstTodo = todoArray.first else {
+                    return Todo()
+                }
+                return firstTodo
+            }
     }
     
-    func downloadAvatar(_ userId: String) -> Observable<Moya.ProgressResponse> {
-        return provider.rx.requestWithProgress(.downloadAvatar(contentPath: ""))
+    func addTodo(taskTitle: String,categoryId: Int,taskNote: String, time: String) -> Single<Void>{
+        return provider.rx.request(.addTodo(taskTitle: taskTitle, categoryId: categoryId, taskNote: taskNote, time: time))
+            .filterSuccessfulStatusCodes()
+            .map{ _ in}
+    }
+    
+    func editTodo(taskTitle: String,categoryId: Int,taskNote: String, time: String,todoId: Int) -> Single<Void>{
+        return provider.rx.request(.editTodo(taskTitle: taskTitle, categoryId: categoryId, taskNote: taskNote, time: time, todoId: todoId))
+            .filterSuccessfulStatusCodes()
+            .map{ _ in}
+    }
+    
+    func checkTodo(todoId: Int, isChecked: Bool) -> Single<Void>{
+        return provider.rx.request(.checkTodo(todoId: todoId, isChecked: isChecked))
+            .filterSuccessfulStatusCodes()
+            .map{_ in}
+    }
+    
+    func deleteTodo(todoId: Int) -> Single<Void>{
+        return provider.rx.request(.deleteTodo(todoId: todoId))
+            .filterSuccessfulStatusCodes()
+            .map{_ in}
     }
 }

@@ -16,7 +16,7 @@ class CellViewModel {
     let title = BehaviorRelay<String?>(value: nil)
     let detail = BehaviorRelay<String?>(value: nil)
     let imageUrl = BehaviorRelay<String?>(value: nil)
-    let isComplete = BehaviorRelay<Bool?>(value: nil)
+    let isComplete = BehaviorRelay<Bool>(value: false)
     let time = BehaviorRelay<String?>(value: nil)
-    let category = BehaviorRelay<Int?>(value: nil)
+    let category_id = BehaviorRelay<Int?>(value: nil)
 }

@@ -1,0 +1,74 @@
+/* 
+ Localizable.strings
+ BaseMVVM
+ 
+ Created by Lê Thọ Sơn on 4/21/20.
+ Copyright © 2020 thoson.it. All rights reserved.
+ */
+
+/* Common */
+"Common.Yes" = "Yes";
+"Common.No" = "No";
+"Common.OK" = "OK";
+"Common.Cancel" = "Huỷ";
+"Common.Done" = "Xong";
+"Common.Back" = "Quay lại";
+"Common.Close" = "Đóng";
+"Common.Edit" = "Edit";
+"Common.Next" = "Next";
+"Common.Skip" = "Skip";
+"Common.Reset" = "Reset";
+"Common.Save" = "Lưu";
+"Common.Delete" = "Xoá";
+"Common.Search" = "Tìm kiếm";
+"Common.Success" = "Thành công";
+"Common.Error" = "Lỗi";
+"Common.NoResults" = "Không có kết quả";
+/* Toast */
+"Toast.ConnectionBack.Message" = "Back online";
+"Toast.ConnectionLost.Message" = "Không có kết nối";
+
+/* Common Alert*/
+"Pick.Image.Alert" = "Choose Photo";
+"Pick.Image.From.Camera" = "Camera";
+"Pick.Image.From.Gallery" = "Gallery";
+"Pick.Image.None_Permision.Alert" = "App don't have permission to access you Photo";
+"Pick.Image.None_Permision.Message" = "Open \"Setting\" and provide permission";
+
+/* Navigation */
+"Navigation.Title" = "Ứng dụng demo";
+
+/* Login */
+"Login.Username.Empty" = "Chưa nhập tên đăng nhập";
+"Login.Password.Empty" = "Chưa nhập mặt khẩu";
+"Login.Username.Password.Invalid" = "Tên đăng nhập hoặc mật khẩu chưa đúng";
+"Login.LoginButtonTitle" = "Đăng nhập";
+"Login.SignupButtonTitle" = "Đăng ký";
+"Login.ScreenTitle" = "Đăng nhập";
+
+/* Signup */
+"Signup.SignupButtonTitle" = "Đăng ký";
+
+/* Home Screen */
+"Home.Title" = "Danh sách";
+"Home.NewTaskButtonTitle" = "Thêm nhiệm vụ";
+"Home.SectionTitle" = "Hoàn thành";
+"Home.MenuButton.Logout" = "Đăng xuất";
+"Home.MenuButton.Language" = "Ngôn ngữ";
+"Home.MenuButton.Title" = "Tuỳ chọn";
+"Home.Complete.Header" = "Hoàn thành";
+
+/* Detail Screen */
+"Detail.Title" = "Thêm nhiệm vụ";
+"Detail.TaskTitle" = "Nhiệm vụ";
+"Detail.DateTitle" = "Ngày";
+"Detail.TimeTitle" = "Thời gian";
+"Detail.Category" = "Thể loại";
+"Detail.Notes" = "Nội dung";
+"Detail.SaveButtonLabel" = "Lưu";
+"Detail.DateAlertLabel" = "Chọn ngày";
+"Detail.TimeAlertLabel" = "Chọn giờ";
+"Detail.TaskTitle.Empty" = "Hãy nhập tên nhiệm vụ!";
+"Detail.Category.Empty" = "Hãy chọn danh mục nhiệm vụ!";
+"Detail.Date.Empty" = "Hãy nhập ngày!";
+"Detail.Update.Success" = "Cập nhật thành công!";

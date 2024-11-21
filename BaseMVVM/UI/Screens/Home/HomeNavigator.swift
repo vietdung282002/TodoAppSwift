@@ -9,14 +9,11 @@
 import Foundation
 
 class HomeNavigator: Navigator {
-    func presentSideMenu() {
-        
-    }
-    
-    func pushAddTodo() {
-        let viewController = AddTodoViewController(nibName: AddTodoViewController.className, bundle: nil)
-        let navigator = AddTodoNavigator(with: viewController)
-        let viewModel = AddTodoViewModel(navigator: navigator)
+    func pushAddTodo(delegate: TodoDetailDelegate) {
+        let viewController = TodoDetailViewController(nibName: TodoDetailViewController.className, bundle: nil)
+        let navigator = TodoDetailNavigator(with: viewController)
+        let viewModel = TodoDetailViewModel(navigator: navigator)
+        viewModel.todoDetailDelegate = delegate
         viewController.viewModel = viewModel
         navigationController?.pushViewController(viewController, animated: true)
     }

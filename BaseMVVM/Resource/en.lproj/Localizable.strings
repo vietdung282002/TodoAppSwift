@@ -28,17 +28,40 @@
 "Toast.ConnectionBack.Message" = "Back online";
 "Toast.ConnectionLost.Message" = "No connection";
 
-/* Common Alert*/
-"Pick.Image.Alert" = "Choose Photo";
-"Pick.Image.From.Camera" = "Camera";
-"Pick.Image.From.Gallery" = "Gallery";
-"Pick.Image.None_Permision.Alert" = "App don't have permission to access you Photo";
-"Pick.Image.None_Permision.Message" = "Open \"Setting\" and provide permission";
-
 /* Navigation */
-"Navigation.Title" = "MVVM Demo";
+"Navigation.Title" = "Sample TodoApp";
 
 /* Login */
-"Login.Username.Empty" = "Chưa nhập tên đăng nhập";
-"Login.Password.Empty" = "Chưa nhập mặt khẩu";
-"Login.Username.Password.Invalid" = "Tên đăng nhập hoặc mật khẩu chưa đúng";
+"Login.Username.Empty" = "Username empty or invalid!";
+"Login.Password.Empty" = "Password empty or invalid!";
+"Login.Username.Password.Invalid" = "Username or password is invalid!";
+"Login.LoginButtonTitle" = "Login";
+"Login.SignupButtonTitle" = "Sign Up";
+"Login.ScreenTitle" = "Sign In";
+
+/* Signup */
+"Signup.SignupButtonTitle" = "Sign Up";
+
+/* Home Screen */
+"Home.Title" = "My Todo List";
+"Home.NewTaskButtonTitle" = "Add New Task";
+"Home.SectionTitle" = "Completed";
+"Home.MenuButton.Logout" = "Log Out";
+"Home.MenuButton.Language" = "Language";
+"Home.MenuButton.Title" = "Choose an Option";
+"Home.Complete.Header" = "Complete";
+
+/* Detail Screen */
+"Detail.Title" = "Add New Task";
+"Detail.TaskTitle" = "Task Title";
+"Detail.DateTitle" = "Date";
+"Detail.TimeTitle" = "Time";
+"Detail.Category" = "Category";
+"Detail.Notes" = "Notes";
+"Detail.SaveButtonLabel" = "Save";
+"Detail.DateAlertLabel" = "Select date";
+"Detail.TimeAlertLabel" = "Select time";
+"Detail.TaskTitle.Empty" = "Please enter task title!";
+"Detail.Category.Empty" = "Please select todo category!";
+"Detail.Date.Empty" = "Please enter date!";
+"Detail.Update.Success" = "Update success!";

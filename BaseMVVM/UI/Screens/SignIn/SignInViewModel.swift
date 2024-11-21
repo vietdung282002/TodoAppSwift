@@ -49,6 +49,7 @@ class SignInViewModel: ViewModel {
                 let user = authResponse.user
                 if user != nil{
                     UserManager.shared.saveUser(user!)
+
                 }
                 self.openHome()
             }, onError: {[weak self] error in
