@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B1C7F3923C0392600A2EE8D"
-               BuildableName = "BaseMVVM.app"
-               BlueprintName = "BaseMVVM"
+               BuildableName = "TodoApp.app"
+               BlueprintName = "TodoApp"
                ReferencedContainer = "container:BaseMVVM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B1C7F3923C0392600A2EE8D"
-            BuildableName = "BaseMVVM.app"
-            BlueprintName = "BaseMVVM"
+            BuildableName = "TodoApp.app"
+            BlueprintName = "TodoApp"
             ReferencedContainer = "container:BaseMVVM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B1C7F3923C0392600A2EE8D"
-            BuildableName = "BaseMVVM.app"
-            BlueprintName = "BaseMVVM"
+            BuildableName = "TodoApp.app"
+            BlueprintName = "TodoApp"
             ReferencedContainer = "container:BaseMVVM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

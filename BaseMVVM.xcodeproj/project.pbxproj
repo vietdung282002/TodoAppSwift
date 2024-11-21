@@ -164,7 +164,7 @@
 		6B1A7F8423C1967B00FEBBDE /* Single+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+ObjectMapper.swift"; sourceTree = "<group>"; };
 		6B1A7F8723C19A8600FEBBDE /* ObservableType+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+ObjectMapper.swift"; sourceTree = "<group>"; };
 		6B1A7F8923C19AD100FEBBDE /* Response+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+ObjectMapper.swift"; sourceTree = "<group>"; };
-		6B1C7F3A23C0392600A2EE8D /* BaseMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B1C7F3A23C0392600A2EE8D /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1C7F3D23C0392600A2EE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B1C7F4123C0392600A2EE8D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6B1C7F4423C0392600A2EE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		6B1C7F3B23C0392600A2EE8D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B1C7F3A23C0392600A2EE8D /* BaseMVVM.app */,
+				6B1C7F3A23C0392600A2EE8D /* TodoApp.app */,
 				6B9F81F82430E76300C50D5F /* BaseMVVM_prod.app */,
 			);
 			name = Products;
@@ -588,9 +588,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B1C7F3923C0392600A2EE8D /* BaseMVVM */ = {
+		6B1C7F3923C0392600A2EE8D /* TodoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B1C7F4E23C0392800A2EE8D /* Build configuration list for PBXNativeTarget "BaseMVVM" */;
+			buildConfigurationList = 6B1C7F4E23C0392800A2EE8D /* Build configuration list for PBXNativeTarget "TodoApp" */;
 			buildPhases = (
 				E685F12F9DAD3D495A37F1B8 /* [CP] Check Pods Manifest.lock */,
 				6B1C7F3623C0392600A2EE8D /* Sources */,
@@ -606,9 +606,9 @@
 				8B84D9032CE71975002B9ADA /* TodoDetail */,
 				8B8D1CC92CE5F76A00B23FE6 /* TodoList */,
 			);
-			name = BaseMVVM;
+			name = TodoApp;
 			productName = BaseMVVM;
-			productReference = 6B1C7F3A23C0392600A2EE8D /* BaseMVVM.app */;
+			productReference = 6B1C7F3A23C0392600A2EE8D /* TodoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6B9F81BF2430E76300C50D5F /* BaseMVVM_prod */ = {
@@ -666,7 +666,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B1C7F3923C0392600A2EE8D /* BaseMVVM */,
+				6B1C7F3923C0392600A2EE8D /* TodoApp */,
 				6B9F81BF2430E76300C50D5F /* BaseMVVM_prod */,
 			);
 		};
@@ -1114,6 +1114,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Todo;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1136,6 +1137,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9LWLN6PT2;
 				INFOPLIST_FILE = BaseMVVM/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Todo;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1203,7 +1205,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B1C7F4E23C0392800A2EE8D /* Build configuration list for PBXNativeTarget "BaseMVVM" */ = {
+		6B1C7F4E23C0392800A2EE8D /* Build configuration list for PBXNativeTarget "TodoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B1C7F4F23C0392800A2EE8D /* Debug */,
